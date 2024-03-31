@@ -39,9 +39,11 @@ function handleClick(e) {
     console.log(value);
     switch (value) {
         case '=':
-            displayValue = operate(+firstNumber, operator, +secondNumber);
-            setDisplayValue();
-            clear();
+            if(firstNumber && secondNumber) {
+                displayValue = operate(+firstNumber, operator, +secondNumber);
+                setDisplayValue();
+                clear();
+            }
             break;
         case 'CLR':
             clear();
