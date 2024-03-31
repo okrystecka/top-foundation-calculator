@@ -1,6 +1,6 @@
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = '';
+let secondNumber = '';
+let operator = '';
 let displayValue = 0;
 
 function add(a, b) {
@@ -39,15 +39,14 @@ function handleClick(e) {
     console.log(value);
     switch (value) {
         case '=':
-            console.log('Działanie: ', firstNumber, operator, secondNumber)
-            console.log(operate(firstNumber, operator, secondNumber))
-            displayValue = operate(firstNumber, operator, secondNumber);
+            displayValue = operate(+firstNumber, operator, +secondNumber);
             setDisplayValue();
             clear();
             break;
         case 'CLR':
             clear();
             displayValue = 0;
+            setDisplayValue();
             break;
         case '+':
         case '-':
@@ -55,23 +54,34 @@ function handleClick(e) {
         case 'x':
             operator = value;
             break;
-        default:
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '0':
             if(operator) {
-                secondNumber = Number(value);
+                secondNumber += value;
                 displayValue = secondNumber;
             } else {
-                firstNumber = Number(value);
+                firstNumber += value;
                 displayValue = firstNumber;
             }
             setDisplayValue();
+            break;
+        default:
             break;
     }
 }
  
 function clear() {
-    firstNumber = null;
-    secondNumber = null;
-    operator = null;
+    firstNumber = '';
+    secondNumber = '';
+    operator = '';
 }
 
 function setDisplayValue() {
